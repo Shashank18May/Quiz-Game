@@ -209,7 +209,7 @@ public class Quiz implements ActionListener{
     }
     );
 
-    public void buttonManager(@NotNull JButton button){
+    public void buttonManager(JButton button){
         button.setFont(new Font("MV Boli",Font.BOLD,35));
         button.setFocusable(false);
         button.setForeground(new Color(0,0,0));
@@ -217,7 +217,7 @@ public class Quiz implements ActionListener{
         button.addActionListener(this);
     }
 
-    public void labelManager(@NotNull JLabel label){
+    public void labelManager(JLabel label){
         label.setBackground(new Color(255,255,0));
         label.setForeground(new Color(102,0,255));
         label.setFont(new Font("MV Boli",Font.PLAIN,35));
