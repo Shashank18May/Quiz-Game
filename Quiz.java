@@ -1,3 +1,5 @@
+
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -189,7 +191,7 @@ public class Quiz implements ActionListener{
     JTextField number_right = new JTextField();
     JTextField score = new JTextField();
 
-    Timer timer=new Timer(10,new ActionListener(){
+    Timer timer=new Timer(10    ,new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             time=time-10;
             seconds = (time/1000)%60;
@@ -207,7 +209,7 @@ public class Quiz implements ActionListener{
     }
     );
 
-    public void buttonManager(JButton button){
+    public void buttonManager(@NotNull JButton button){
         button.setFont(new Font("MV Boli",Font.BOLD,35));
         button.setFocusable(false);
         button.setForeground(new Color(0,0,0));
@@ -215,9 +217,9 @@ public class Quiz implements ActionListener{
         button.addActionListener(this);
     }
 
-    public void labelManager(JLabel label){
-        label.setBackground(new Color(255,255,0));
-        label.setForeground(new Color(102,0,255));
+    public void labelManager(@NotNull JLabel label){
+        label.setForeground(new Color(228,87,46));
+        label.setBackground(new Color(117,244,244));
         label.setFont(new Font("MV Boli",Font.PLAIN,35));
         label.setOpaque(true);
 
@@ -227,7 +229,7 @@ public class Quiz implements ActionListener{
     public Quiz() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(650,650);
-        frame.getContentPane().setBackground(new Color(255,102,153));
+        frame.getContentPane().setBackground(new Color(216,169,255));
         frame.setLayout(null);
         frame.setResizable(false);
 
@@ -243,8 +245,8 @@ public class Quiz implements ActionListener{
         textArea.setBounds(0,55,650,50);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setBackground(new Color(255,255,0));
-        textArea.setForeground(new Color(102,0,255));
+        textArea.setBackground(new Color(235,255,0));
+        textArea.setForeground(new Color(239,62,54));
         textArea.setFont(new Font("MV Boli",Font.PLAIN,25));
         textArea.setBorder(BorderFactory.createBevelBorder(2));
         textArea.setEditable(false);
