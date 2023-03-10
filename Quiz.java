@@ -1,11 +1,11 @@
-
-
-import java.awt.event.*;
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.Timer;
-import java.util.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 
 public class Quiz implements ActionListener{
@@ -174,7 +174,7 @@ public class Quiz implements ActionListener{
 
     JFrame frame = new JFrame();
     JTextField textField = new JTextField();
-    JTextArea textArea = new JTextArea();
+    JTextField textArea = new JTextField();
 
     JButton buttonA = new JButton();
     JButton buttonB = new JButton();
@@ -209,33 +209,35 @@ public class Quiz implements ActionListener{
     }
     );
 
-    public void buttonManager(@NotNull JButton button){
-        button.setFont(new Font("MV Boli",Font.BOLD,35));
+    public void buttonManager(JButton button){
+        button.setFont(new Font("Sans Serif",Font.BOLD,35));
         button.setFocusable(false);
-        button.setForeground(new Color(0,0,0));
-        button.setBackground(new Color(0,255,0));
+        button.setForeground(new Color(25,133,161));
+        button.setBackground(new Color(70, 73, 76));
         button.addActionListener(this);
+
     }
 
-    public void labelManager(@NotNull JLabel label){
-        label.setForeground(new Color(228,87,46));
-        label.setBackground(new Color(117,244,244));
-        label.setFont(new Font("MV Boli",Font.PLAIN,35));
+    public void labelManager(JLabel label){
+        label.setBackground(new Color(76, 92, 104));
+        label.setForeground(new Color(255,255,255));
+        label.setFont(new Font("Georgia",Font.PLAIN,35));
         label.setOpaque(true);
 
 
     }
 
-    public Quiz() {
+    public Quiz () {
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(650,650);
-        frame.getContentPane().setBackground(new Color(216,169,255));
+        frame.getContentPane().setBackground(new Color(70, 73, 76));
         frame.setLayout(null);
         frame.setResizable(false);
 
         textField.setBounds(0,0,650,50);
-        textField.setBackground(new Color(102,255,255));
-        textField.setForeground(new Color(0,0,255));
+        textField.setForeground(new Color(255,255,255));
+        textField.setBackground(new Color(70, 73, 76));
         textField.setFont(new Font("Ink Free",Font.PLAIN,40));
         textField.setBorder(BorderFactory.createBevelBorder(1));
         textField.setHorizontalAlignment(JTextField.CENTER);
@@ -243,11 +245,10 @@ public class Quiz implements ActionListener{
 
 
         textArea.setBounds(0,55,650,50);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setBackground(new Color(235,255,0));
-        textArea.setForeground(new Color(239,62,54));
-        textArea.setFont(new Font("MV Boli",Font.PLAIN,25));
+        textArea.setHorizontalAlignment(JTextField.CENTER);
+        textArea.setForeground(new Color(25,155,161));
+        textArea.setBackground(new Color(70, 73, 76));
+        textArea.setFont(new Font("Serif",Font.BOLD,25));
         textArea.setBorder(BorderFactory.createBevelBorder(2));
         textArea.setEditable(false);
 
@@ -277,24 +278,24 @@ public class Quiz implements ActionListener{
         labelManager(answer_labelD);
 
         seconds_left.setBounds(535,510,210,100);
-        seconds_left.setBackground(new Color(102, 255, 51));
-        seconds_left.setForeground(new Color(255,0,0));
+        seconds_left.setBackground(new Color(70, 73, 76));
+        seconds_left.setForeground(new Color(255,255,255));
         seconds_left.setFont(new Font("Ink Free",Font.BOLD,45));
-        seconds_left.setBorder(BorderFactory.createBevelBorder(1,Color.black,Color.PINK));
+        seconds_left.setBorder(BorderFactory.createBevelBorder(1,Color.black,Color.darkGray));
         seconds_left.setOpaque(true);
         seconds_left.setHorizontalAlignment(JTextField.LEFT);
         seconds_left.setText(String.valueOf(seconds));
 
         number_right.setBounds(225,225,200,100);
-        number_right.setForeground(new Color(0,0,0));
-        number_right.setBackground(new Color(25,255,0));
+        number_right.setForeground(new Color(70, 73, 76));
+        number_right.setBackground(new Color(197, 195, 198));
         number_right.setFont(new Font("Ink Free",Font.BOLD,50));
         number_right.setHorizontalAlignment(JTextField.CENTER);
         number_right.setEditable(true);
 
         score.setBounds(225,325,200,100);
-        score.setForeground(new Color(0,0,0));
-        score.setBackground(new Color(25,255,0));
+        score.setForeground(new Color(70, 73, 76));
+        score.setBackground(new Color(197, 195, 198));
         score.setFont(new Font("Ink Free",Font.BOLD,50));
         score.setHorizontalAlignment(JTextField.CENTER);
         score.setEditable(false);
@@ -334,10 +335,10 @@ public class Quiz implements ActionListener{
             }else{
                 list.add(k);
             }
-            answer_labelA.setText("         "+Options[k][0]);
-            answer_labelB.setText("         "+Options[k][1]);
-            answer_labelC.setText("         "+Options[k][2]);
-            answer_labelD.setText("         "+Options[k][3]);
+            answer_labelA.setText("        "+Options[k][0]);
+            answer_labelB.setText("        "+Options[k][1]);
+            answer_labelC.setText("        "+Options[k][2]);
+            answer_labelD.setText("        "+Options[k][3]);
             time=10000;
             timer.start();
 
@@ -413,10 +414,10 @@ public class Quiz implements ActionListener{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                answer_labelA.setForeground(new Color(102,0,255));
-                answer_labelB.setForeground(new Color(102,0,255));
-                answer_labelC.setForeground(new Color(102,0,255));
-                answer_labelD.setForeground(new Color(102,0,255));
+                answer_labelA.setForeground(new Color(25, 133, 161));
+                answer_labelB.setForeground(new Color(25, 133, 161));
+                answer_labelC.setForeground(new Color(25, 133, 161));
+                answer_labelD.setForeground(new Color(25, 133, 161));
 
                 answer=' ';
                 seconds=10;
@@ -456,7 +457,7 @@ public class Quiz implements ActionListener{
         result = (int)((right_guesses/(double) total_questions)*100);
 
         textField.setText("RESULTS!");
-        textArea.setText("                  Your score is :-");
+        textArea.setText("               Your score is :-");
         answer_labelA.setText("");
         answer_labelA.setOpaque(false);
         answer_labelB.setText("");
