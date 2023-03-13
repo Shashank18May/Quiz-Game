@@ -26,4 +26,4 @@ If you want to run this code:-
 
 Thank you for visiting this page.
 
-        ![thank-you](https://user-images.githubusercontent.com/111509274/224711319-a1d404c8-b3d2-4246-87a2-caed5922d7e7.svg)
+![thank-you](https://user-images.githubusercontent.com/111509274/224711319-a1d404c8-b3d2-4246-87a2-caed5922d7e7.svg)
