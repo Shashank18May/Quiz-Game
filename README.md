@@ -10,7 +10,10 @@ It also includes a timer.
 Requirements needed to run the code:-
 
 - A JDK(any version above 1.7.5)
-- 
+- The following files:-
+  - Main.java
+  - Quiz.java
+  - questions.csv
 
 If you want to run this code:- 
 
@@ -23,6 +26,8 @@ If you want to run this code:-
 - Compile Main.java with javac Main.java
 
 - Then run java Main.java to launch the Quiz-Game.
+
+You can change the question with your own questions if you like.
 
 Thank you for visiting this page.
 
