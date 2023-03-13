@@ -22,7 +22,7 @@ If you want to run this code:-
 
 - Compile Main.java with javac Main.java
 
--Then run java Calculator to launch the Quiz-Game.
+- Then run java Main.java to launch the Quiz-Game.
 
 Thank you for visiting this page.
 
