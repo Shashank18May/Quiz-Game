@@ -1,164 +1,18 @@
 import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.File;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 
 public class Quiz implements ActionListener{
 
-    String[] Questions = {
-            //1
-            "What is the capital of France?",
-            //2
-            "Who wrote the Harry Potter book series?",
-            //3
-            "Which is the smallest continent?",
-            //4
-            "What is the currency of Japan?",
-            //5
-            "What is the chemical symbol for gold?",
-
-            //6
-            "Which is the biggest planet?",
-            //7
-            "Which is the highest number in a deck?",
-            //8
-            "Which is the world's largest desert?",
-
-            //9
-            "What is the national animal of Canada?",
-            //10
-            "What is the capital of India?",
-            //11
-            "What is the tallest mountain in the world?",
-
-            //12
-            "What is the largest mammal on earth?",
-            //13
-            "What is the currency of USA?",
-            //14
-            "What is the smallest country in the world by land?",
-
-            //15
-            "Which planet is closest to the sun?",
-            //16
-            "What is the largest organ in the human body?",
-
-            //17
-            "In what year did World War II end?",
-            //18
-            "What is the capital of Brazil?",
-            //19
-            "What is the primary language spoken in Argentina?",
-
-            //20
-            "What is the national animal of Australia?",
-            //21
-            "What is the capital of Spain?",
-            //22
-            "Which is the longest river in Africa?",
-            //23
-            "What is the largest ocean in the world?",
-            //24
-            "Which country is known as the Land of Rising Sun?",
-            //25
-            "What is the tallest animal on earth?",
-            //26
-            "What is the national flower of Japan?"
-    };
-
-    String[][] Options = {
-            //1
-            {"Paris", "Berlin", "London", "Madrid"},
-            //2
-            {"J.K. Rowling", "Stephen King", "George R.R. Martin", "Suzanne Collins"},
-            //3
-            {"Australia", "South America", "Europe", "Antarctica"},
-            //4
-            {"Pound","Sterling","Yen","Dollar"},
-            //5
-            {"Au", "Ag", "Cu", "Fe"},
-            //6
-            {"Jupiter", "Saturn", "Uranus", "Neptune"},
-            //7
-            {"10", "11", "12", "13"},
-            //8
-            {"Sahara", "Gobi", "Kalahari", "Arabian"},
-            //9
-            {"Grizzly Bear", "Moose", "Beaver", "Canadian Goose"},
-            //10
-            {"New Delhi", "Mumbai", "Kolkata", "Chennai"},
-            //11
-            {"K2", "Mount Everest", "Kanchenjunga", "Lhotse"},
-
-            //12
-            {"Blue whale", "Elephant", "Giraffe", "Hippopotamus"},
-            //13
-            {"Yen", "Euro", "Pound sterling", "Dollar"},
-            //14
-            {"Vatican City", "Monaco", "Nauru", "Tuvalu"},
-
-            //15
-            {"Mercury", "Venus", "Earth", "Mars"},
-            //16
-            {"Skin", "Heart", "Liver", "Lungs"},
-
-            //17
-            {"1945", "1944", "1943", "1942"},
-            //18
-            {"Brasília", "São Paulo", "Rio de Janeiro", "Belo Horizonte"},
-            //19
-            {"Spanish", "Portuguese", "English", "French"},
-
-            //20
-            {"Kangaroo", "Koala", "Emu", "Tasmanian devil"},
-            //21
-            {"Madrid", "Barcelona", "Valencia", "Seville"},
-            //22
-            {"Nile", "Congo", "Zambezi", "Niger"},
-            //23
-            {"Pacific", "Atlantic", "Indian", "Arctic"},
-            //24
-            {"Japan", "China", "South Korea", "North Korea"},
-            //25
-            {"Elephant","Giraffe", "Hippopotamus", "Gorilla"},
-            //26
-            {"Cherry blossom", "Lotus", "Rose", "Lily"}
-                          };
-
-    char[] answers = {
-            'A',//1
-            'A',//2
-            'A',//3
-            'C',//4
-            'A',//5
-            'A',//6
-            'A',//7
-            'A',//8
-            'C',//9
-            'A',//10
-            'B',//11
-            'A',//12
-            'D',//13
-            'A',//14
-            'A',//15
-            'C',//16
-            'A',//17
-            'A',//18
-            'A',//19
-            'A',//20
-            'A',//21
-            'A',//22
-            'A',//23
-            'A',//24
-            'B',//25
-            'A'//26
-    };
-    char answer;
+    String answer;
+    String Questions;
     int index;
     int right_guesses = 0;
     int total_questions = 10;
@@ -168,6 +22,13 @@ public class Quiz implements ActionListener{
     int seconds;
     int milliseconds;
     List<Integer> list = new ArrayList<>();
+    List<String> ar = new ArrayList<>();
+    String[] row = {};
+
+    Scanner sc = new Scanner(new File("path to your csv"));
+
+
+
 
     String millisecond_string = String.format("%02d", milliseconds);
     String seconds_string = String.format("%02d", seconds);
@@ -227,7 +88,8 @@ public class Quiz implements ActionListener{
 
     }
 
-    public Quiz () {
+
+    public Quiz () throws Exception {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(650,650);
@@ -317,28 +179,36 @@ public class Quiz implements ActionListener{
         nextQuestion();
     }
 
-    public void nextQuestion(){
+    public void nextQuestion() {
         if(index>= total_questions){
             results();
         }
         else {
             textField.setText("Question Number "+(index+1));
-            Random r = new Random();
-            String options = Questions[r.nextInt(Questions.length)];
-            textArea.setText(options);
-            k = Arrays.asList(Questions).indexOf(options);
+            sc.useDelimiter("\n");
+            while(sc.hasNextLine()){
+
+                ar.add(sc.nextLine());
+            }
+            Random r =new Random();
+            Questions = ar.get(r.nextInt(ar.size()));
+            row = Questions.split(",");
+            textArea.setText(row[0]);
+            k = ar.indexOf(Questions);
             if(list.contains(k)){
-                options = Questions[r.nextInt(Questions.length)];
-                textArea.setText(options);
-                k=Arrays.asList(Questions).indexOf(options);
+                Questions = ar.get(r.nextInt(ar.size()));
+                row = Questions.split(",");
+                textArea.setText(row[0]);
                 list.add(k);
+
+
             }else{
                 list.add(k);
             }
-            answer_labelA.setText("        "+Options[k][0]);
-            answer_labelB.setText("        "+Options[k][1]);
-            answer_labelC.setText("        "+Options[k][2]);
-            answer_labelD.setText("        "+Options[k][3]);
+            answer_labelA.setText("        "+row[1]);
+            answer_labelB.setText("        "+row[2]);
+            answer_labelC.setText("        "+row[3]);
+            answer_labelD.setText("        "+row[4]);
             time=10000;
             timer.start();
 
@@ -356,29 +226,29 @@ public class Quiz implements ActionListener{
         buttonD.setEnabled(false);
 
         if(e.getSource()==buttonA){
-            answer='A';
-            if(answer == answers[k]){
+            answer="A";
+            if(answer.equals(row[5])){
                 right_guesses++;
             }
 
         }
         if(e.getSource()==buttonB){
-            answer='B';
-            if(answer == answers[k]){
+            answer="B";
+            if(answer.equals(row[5])){
                 right_guesses++;
             }
 
         }
         if(e.getSource()==buttonC){
-            answer='C';
-            if(answer == answers[k]){
+            answer="C";
+            if(answer.equals(row[5])){
                 right_guesses++;
             }
 
         }
         if(e.getSource()==buttonD){
-            answer='D';
-            if(answer == answers[k]){
+            answer="D";
+            if(answer.equals(row[5])){
                 right_guesses++;
             }
 
@@ -393,20 +263,20 @@ public class Quiz implements ActionListener{
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
 
-        if(answers[k]!='A'){
+        if(!Objects.equals(row[5], "A")){
             answer_labelA.setForeground(new Color(255,0,0));
 
         }else {answer_labelA.setForeground(new Color(0,255,0));}
-        if(answers[k]!='B'){
+        if(!Objects.equals(row[5], "B")){
             answer_labelB.setForeground(new Color(255,0,0));
 
         }else {answer_labelB.setForeground(new Color(0,255,0));}
 
-        if(answers[k]!='C'){
+        if(!Objects.equals(row[5], "C")){
             answer_labelC.setForeground(new Color(255,0,0));
 
         }else {answer_labelC.setForeground(new Color(0,255,0));}
-        if(answers[k]!='D'){
+        if(!Objects.equals(row[5], "D")){
             answer_labelD.setForeground(new Color(255,0,0));
 
         }else {answer_labelD.setForeground(new Color(0,255,0));}
@@ -414,12 +284,12 @@ public class Quiz implements ActionListener{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                answer_labelA.setForeground(new Color(25, 133, 161));
-                answer_labelB.setForeground(new Color(25, 133, 161));
-                answer_labelC.setForeground(new Color(25, 133, 161));
-                answer_labelD.setForeground(new Color(25, 133, 161));
+                answer_labelA.setForeground(new Color(255,255,255));
+                answer_labelB.setForeground(new Color(255,255,255));
+                answer_labelC.setForeground(new Color(255,255,255));
+                answer_labelD.setForeground(new Color(255,255,255));
 
-                answer=' ';
+                answer=" ";
                 seconds=10;
                 seconds_left.setText(String.valueOf(seconds));
 
@@ -429,7 +299,11 @@ public class Quiz implements ActionListener{
                 buttonD.setEnabled(true);
 
                 index++;
-                nextQuestion();
+                try {
+                    nextQuestion();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         }
@@ -457,7 +331,8 @@ public class Quiz implements ActionListener{
         result = (int)((right_guesses/(double) total_questions)*100);
 
         textField.setText("RESULTS!");
-        textArea.setText("               Your score is :-");
+        textArea.setBorder(BorderFactory.createBevelBorder(2));
+        textArea.setText("Your score is :-");
         answer_labelA.setText("");
         answer_labelA.setOpaque(false);
         answer_labelB.setText("");
