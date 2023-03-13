@@ -11,9 +11,9 @@ Requirements needed to run the code:-
 
 - A JDK(any version above 1.7.5)
 - The following files:-
-  - Main.java
-  - Quiz.java
-  - questions.csv
+  ## Main.java
+  ## Quiz.java
+  ## questions.csv
 
 If you want to run this code:- 
 
