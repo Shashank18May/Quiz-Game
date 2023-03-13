@@ -7,18 +7,23 @@ It also includes a timer.
 ![built-by-shashank](https://user-images.githubusercontent.com/111509274/224708842-3093d8ad-a270-46c6-9068-09d618859625.svg)            
 ![made-with-java](https://user-images.githubusercontent.com/111509274/224708850-286b1869-6b43-4486-86d1-015d9eb91fe5.svg)
 
+Requirements needed to run the code:-
+
+- A JDK(any version above 1.7.5)
+- 
+
 If you want to run this code:- 
 
-Just create one new folder with two new files  named as Main and Quiz and save the code respectively.
+- Just clone this repo and extract it where ever you like.
 
-Also create the csv and save the questions.(You can make the questions yourself also if you want):
+- Now on line 28 of the Quiz.java enter the path of you csv file.
 
-Now on line 28 of the Quiz.java enter the path of you csv file.
+- Open cmd.
 
-Compile Main.java with javac Main.java
+- Compile Main.java with javac Main.java
 
+-Then run java Calculator to launch the Quiz-Game.
 
-Then run java Calculator to launch the Quiz-Game.
+Thank you for visiting this page.
 
-This program is compatible with any verion of java above JAVA 1.7.5
-
+        ![thank-you](https://user-images.githubusercontent.com/111509274/224711319-a1d404c8-b3d2-4246-87a2-caed5922d7e7.svg)
