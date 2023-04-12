@@ -199,6 +199,7 @@ public class Quiz implements ActionListener{
                 Questions = ar.get(r.nextInt(ar.size()));
                 row = Questions.split(",");
                 textArea.setText(row[0]);
+                k=ar.indexOf(Questions);
                 list.add(k);
 
 
